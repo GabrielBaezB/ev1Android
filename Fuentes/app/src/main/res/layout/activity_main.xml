@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopBase"
+        android:text="@string/titulo"
+        android:textSize="@dimen/tamanioTitulo"
+        android:gravity="center_horizontal"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTopIngreso"
+        android:text="@string/ingName"
+        android:textSize="@dimen/tamanioIngre"
+        android:textColor="@color/colorTextNegro"
+        ></TextView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:textSize="@dimen/tamanioInputs"
+        android:hint="@string/labelUno"
+        ></EditText>
+</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:text="@string/labelFecha"
+        android:textSize="@dimen/tamanioIngre"
+        android:textColor="@color/colorTextNegro"
+        ></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/seFecha"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:hint="@string/ingFecha"
+        android:textSize="@dimen/tamanioIngre"
+        android:textColor="@color/colorTextNegro"
+        ></TextView>
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:text="@string/labelGenero"
+        android:textSize="@dimen/tamanioIngre"
+        android:textColor="@color/colorTextNegro"
+        ></TextView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:textSize="@dimen/tamanioIngre" />
+
+</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:text="@string/labelPrecio"
+        android:textSize="@dimen/tamanioIngre"
+        android:textColor="@color/colorTextNegro"
+        ></TextView>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/valorEntrada"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:hint="@string/labelValor"
+        android:textSize="@dimen/tamanioInputs"
+        android:layout_weight="1" />
+</LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/marginTop"
+        android:text="@string/labelCasificacion"
+        android:textSize="@dimen/tamanioIngre"
+        android:textColor="@color/colorTextNegro"
+        ></TextView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <Spinner
+            android:id="@+id/spinnerDos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/marginTop"
+            android:textSize="@dimen/tamanioIngre" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:layout_marginTop="@dimen/marginTopBase"
+        android:id="@+id/agregarBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:text="Agregar"
+        android:textAllCaps="false"
+        android:textColor="@color/colorTextNegro"
+        android:textSize="@dimen/tamanioIngre"></Button>
+</LinearLayout>

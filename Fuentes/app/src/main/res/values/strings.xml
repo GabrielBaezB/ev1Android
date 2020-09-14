@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Mis Conciertos</string>
+    <string name="titulo">Mis Conciertos</string>
+    <string name="ingName">Nombre de Artista</string>
+    <string name="labelUno">Ingrese el nombre</string>
+    <string name="ingFecha">DD/MM/YYYY</string>
+    <string name="labelFecha">Seleccione la Fecha</string>
+    <string name="labelGenero">Seleccione un Genero Musical</string>
+    <string name="selectGenero">Seleccione</string>
+    <string name="labelValor">Ingrese el valor de entrada</string>
+    <string name="labelPrecio">Valor de Entrada</string>
+    <string name="labelCasificacion">Califiacion</string>
+
 </resources>
