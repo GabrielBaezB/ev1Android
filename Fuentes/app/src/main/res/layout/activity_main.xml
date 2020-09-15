@@ -3,15 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginTopBase"
-        android:text="@string/titulo"
-        android:textSize="@dimen/tamanioTitulo"
-        android:gravity="center_horizontal"
-        />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,12 +17,12 @@
     android:orientation="horizontal">
 
     <EditText
+        android:id="@+id/EtxtName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        android:textSize="@dimen/tamanioInputs"
+        android:layout_height="match_parent"
         android:hint="@string/labelUno"
-        ></EditText>
+        android:inputType="text"
+        android:textSize="@dimen/tamanioInputs"></EditText>
 </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -46,15 +37,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <TextView
+    <EditText
         android:id="@+id/seFecha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="date"
+        android:focusable="false"
+        android:clickable="true"
+        android:maxLines="1"
         android:layout_marginTop="@dimen/marginTop"
         android:hint="@string/ingFecha"
-        android:textSize="@dimen/tamanioIngre"
+        android:textSize="@dimen/tamanioInputs"
         android:textColor="@color/colorTextNegro"
-        ></TextView>
+        ></EditText>
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
@@ -89,7 +84,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <EditText
-        android:id="@+id/valorEntrada"
+        android:id="@+id/EvalorEntrada"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -124,7 +119,7 @@
         android:id="@+id/agregarBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorAccent"
+        android:background="@color/colorCompleTres"
         android:text="Agregar"
         android:textAllCaps="false"
         android:textColor="@color/colorTextNegro"

@@ -2,6 +2,10 @@
 <resources>
     <color name="colorTextNegro">#212121</color>
     <color name="colorPrimary">#4caf50</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#546e7a</color>
+    <color name="colorPrimaryDark">#1b5e1f</color>
+    <color name="colorAccent">#3F51B5</color>
+
+    <color name="colorComple">#af4cac</color>
+    <color name="colorCompleDos">#4cacaf</color>
+    <color name="colorCompleTres">#4f4caf</color>
 </resources>

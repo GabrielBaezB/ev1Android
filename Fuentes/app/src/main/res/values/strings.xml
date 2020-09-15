@@ -11,4 +11,9 @@
     <string name="labelPrecio">Valor de Entrada</string>
     <string name="labelCasificacion">Califiacion</string>
 
+
+    <!-- Errores -->
+    <string name="name_error">Please enter your name</string>
+    <string name="date_error">Ingrese la Fecha</string>
+
 </resources>
