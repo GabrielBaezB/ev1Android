@@ -124,4 +124,10 @@
         android:textAllCaps="false"
         android:textColor="@color/colorTextNegro"
         android:textSize="@dimen/tamanioIngre"></Button>
+
+    <ListView
+        android:id="@+id/listarEvento"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></ListView>
 </LinearLayout>

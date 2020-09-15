@@ -1,10 +1,15 @@
 package com.inacap.misconciertos.dto;
 
 
+import android.widget.Spinner;
+
+import java.util.Date;
+
 public class Evento {
 
     private String name;
-    private String generoMusical;
+    private String fecha;
+    private Boolean generoMusical;
     private int valorEntrada;
     private int califi;
 
@@ -16,11 +21,19 @@ public class Evento {
         this.name = name;
     }
 
-    public String getGeneroMusical() {
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public Boolean getGeneroMusical() {
         return generoMusical;
     }
 
-    public void setGeneroMusical(String generoMusical) {
+    public void setGeneroMusical(Boolean generoMusical) {
         this.generoMusical = generoMusical;
     }
 
@@ -44,6 +57,7 @@ public class Evento {
     public String toString() {
         return "Evento{" +
                 "name='" + name + '\'' +
+                ", fecha=" + fecha +
                 ", generoMusical='" + generoMusical + '\'' +
                 ", valorEntrada=" + valorEntrada +
                 ", califi=" + califi +
