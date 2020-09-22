@@ -17,6 +17,8 @@ public class EventoDAO {
         eventos.add(e);
     }
 
-
+    public List<Evento> getAll(){
+        return eventos;
+    }
     }
 

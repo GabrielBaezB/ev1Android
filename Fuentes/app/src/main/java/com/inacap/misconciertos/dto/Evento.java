@@ -1,10 +1,5 @@
 package com.inacap.misconciertos.dto;
 
-
-import android.widget.Spinner;
-
-import java.util.Date;
-
 public class Evento {
 
     private String name;
@@ -54,13 +49,7 @@ public class Evento {
     }
 
     @Override
-    public String toString() {
-        return "Evento{" +
-                "name='" + name + '\'' +
-                ", fecha=" + fecha +
-                ", generoMusical='" + generoMusical + '\'' +
-                ", valorEntrada=" + valorEntrada +
-                ", califi=" + califi +
-                '}';
+    public String toString(){
+        return "Fecha: "+fecha +"  Nombre: "+ name+" Valor Entrada: $"+valorEntrada+"    "+califi;
     }
 }

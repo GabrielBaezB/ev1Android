@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,18 +28,20 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private List<Evento> eventos = new ArrayList<>();
+    private EventoDAO eventoDAO = new EventoDAO();
+
+    private ListView lsrEvento; // listar
+    private ArrayAdapter<Evento> eventosAdapter;
+    private Button btn; // btn agregar
+
     private EditText txtName;//Nombre del artista
     private EditText txtFecha;// Fecha
     private EditText txtValor;// Valor de Entrada
     private Spinner spin; // Genero Musical
     private Spinner spinDos; // Calificacion
-    private Button btn; // btn agregar
-
-    ArrayAdapter<Evento> eventoAdapter;
 
     private  String[] genMusical = {"Seleccione","Rock", "Jazz", "Pop", "Reguetoon", "Salsa", "Metal"};
-    private String[] calificaion = {"Seleccione","1","2","3","4","5","6","7"};
+    private static String[] calificaion = {"Seleccione","1","2","3",("4"),"5","6","7"};
 
     private static final String TAG = "MainActivity";
     DatePickerDialog.OnDateSetListener setListener;
@@ -48,14 +51,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         //Referencia de Los View
+        this.lsrEvento = findViewById(R.id.listarEvento);
+        this.eventosAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, eventoDAO.getAll());
+        this.lsrEvento.setAdapter(eventosAdapter);
+
         //Nombre
         this.txtName =  findViewById(R.id.EtxtName);
         //Calendario
         this.txtFecha = findViewById(R.id.seFecha);
         //Genero Musical
         this.spin = findViewById(R.id.spinner);
-
         //Valor
         this.txtValor = findViewById(R.id.EvalorEntrada);
         //Calificacion
@@ -65,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
         //boton agregar
         this.btn = findViewById(R.id.agregarBtn);
+
         /////////////////////// Calendario ///////////////////////////////////
         txtFecha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,10 +103,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         a2= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, calificaion);
         spin.setAdapter(a1);
         spinDos.setAdapter(a2);
+
         //////////////////////Fin de Spinner//////////////////////
 
         this.btn.setOnClickListener(new View.OnClickListener() {
-            boolean isNameValid;
             @Override
             public void onClick(View view) {
                 List<String> errores = new ArrayList<>();
@@ -109,7 +117,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 }else{
                     isNameValid = true;
                 }*/
-                String nn =  txtName.getText().toString().trim();
+                String nn =  txtName.getText().toString().trim(); // nn = nombre
                 if(nn.isEmpty()){
                     errores.add("Ingrese Nombre");
                 }
@@ -122,27 +130,19 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     isNameValid = true;
                 }*/
 
-              String ff = txtFecha.getText().toString().trim();
+              String ff = txtFecha.getText().toString().trim(); // ff = Fecha
               if (ff.isEmpty()){
                   errores.add("Ingrese Una Fecha");
               }
 
                 // validar Genero Musical
-               /* if(spin.getSelectedItemPosition()==0){
-                    TextView errorText = (TextView) spin.getSelectedView();
-                    errorText.setError("");
-                    errorText.setTextColor(Color.BLUE);
-                    errorText.setText("Seleccione un Genero");
-                }*/
-               Boolean ss;
+               Boolean ss; // ss = Genero
                if(ss = spin.getSelectedItemPosition()==0){
                    TextView errorText = (TextView) spin.getSelectedView();
                    errorText.setError("");
                    errorText.setTextColor(Color.BLUE);
-                   errorText.setText("Seleccione un Genero");
+                   errores.add("Seleccione un Genero");
                }
-
-
                 //Validar Valor
                /* txtValor.setError(null);
                 String valor = txtValor.getText().toString();
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 int num = Integer.parseInt(valor);
                 if (num > 0){
                 }*/
-                String valora = txtValor.getText().toString().trim();
+                String valora = txtValor.getText().toString().trim(); //valora = valor
                 int valor=0;
                 try{
                     valor = Integer.parseInt(valora);
@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     errorText.setTextColor(Color.BLUE);
                     errorText.setText("Clasifique al Artista");
                 }*/
-                String ssDos = spinDos.getSelectedItem().toString();
+                String ssDos = spinDos.getSelectedItem().toString(); //ssDos = calificacion
                 int ssD = 0;
                 try {
                     ssD = Integer.parseInt(ssDos);
@@ -184,17 +184,18 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                     errores.add("Seleccione una Calificacion");
                 }
 
-                if (errores.isEmpty()){
-                Evento evento = new Evento();
-                evento.setName(nn);
-                evento.setFecha(ff);
-                evento.setGeneroMusical(ss);
-                evento.setValorEntrada(valor);
-                evento.setCalifi(ssD);
+                if (errores.isEmpty()) {
+                    Evento evento = new Evento();
+                    evento.setName(nn);
+                    evento.setFecha(ff);
+                    evento.setGeneroMusical(ss);
+                    evento.setValorEntrada(valor);
+                    evento.setCalifi(ssD);
+                    eventoDAO.add(evento);
+                    eventosAdapter.notifyDataSetChanged();
+                    Toast.makeText(MainActivity.this, "Evento Registrado", Toast.LENGTH_SHORT).show();
 
-                new EventoDAO().add(evento);
 
-                eventoAdapter.notifyDataSetChanged();
         }else{
                     mostrarErrores(errores);
                 }
@@ -203,7 +204,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     });
     }
-
 
     @Override
     public void onItemSelected(AdapterView<?> arg0, View v, int position, long id) {
@@ -215,6 +215,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
+
     private void mostrarErrores(List<String> errores){
         String mensaje = "";
         for(String e: errores){
@@ -227,7 +228,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 .setPositiveButton("Agregar", null)
                 .create()
                 .show();
-
 
     }
 }
